@@ -16,11 +16,7 @@ def filter_data(j, f):
 def filter_all(json_objs, filters):
     results = []
     for j in json_objs:
-        bools = []
-        for f in filters:
-            json_string = '{"' + f + '": "' + filters[f] + '"}'
-            x = filter_data(j, json.loads(json_string))
-            bools.append(x)
-        if all(bools):
+        x = filter_data(j, json.loads(filters))
+        if x:
             results.append(j)
     return results
