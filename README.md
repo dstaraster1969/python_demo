@@ -1,1 +1,1 @@
-# python_demo
+python main.py 3 "{}"
