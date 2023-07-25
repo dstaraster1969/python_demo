@@ -1,7 +1,7 @@
 import argparse
 import yaml
 import requests
-import json
+import asyncio
 
 
 def parse_args():
@@ -13,12 +13,17 @@ def parse_args():
     return int(args.num_pages), args.filter
 
 
-def get_data_from_api(num_pages):
+async def get_data_from_api(num_pages):
     url = yaml.safe_load(open('./config.yml'))['url']
     results = []
     for i in range(1, num_pages):
-        data = requests.get(f'{url}?page={i}').json()
+        data = await make_request(url, i)
         for d in data:
             results.append(d)
 
     return results
+
+
+async def make_request(url, page):
+    data = requests.get(f'{url}?page={page}').json()
+    return data
