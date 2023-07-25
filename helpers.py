@@ -1,7 +1,6 @@
 import argparse
 import yaml
 import requests
-import asyncio
 
 
 def parse_args():

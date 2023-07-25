@@ -1,6 +1,3 @@
-import json
-
-
 def filter_all(json_objs, filters):
     # We want to run the first filter on all the json objects
     results = apply_filter(json_objs, filters[0])

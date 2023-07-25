@@ -1,5 +1,3 @@
-import aiohttp
-import sys
 import asyncio
 import json
 
@@ -8,8 +6,9 @@ from filter import filter_all
 
 
 async def main():
-    # first grab the data from the API. Number of pages is required because
-    # getting all pages from the API takes 15 mins
+    # first grab the data from the API. Getting all pages on one thread takes
+    # forever, so made the call asynchronous, but getting all pages still takes
+    # too long.
     data = await get_data_from_api(num_pages)
 
     # filter that data on all filters passed in
