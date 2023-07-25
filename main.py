@@ -11,7 +11,7 @@ def main():
     data = get_data_from_api(num_pages)
     filtered_data = filter_all(data, json.loads(json_filter))
     formatted = json.dumps(filtered_data, indent=2)
-    print(filtered_data)
+    print(formatted)
 
 
 if __name__ == '__main__':
